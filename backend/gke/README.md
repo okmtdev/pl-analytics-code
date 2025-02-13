@@ -93,10 +93,25 @@ kubectl top nodes
 
 ## リソース適用
 
+ネームスペース
+
+```
+kubectl create namespace ngin
+```
+
 ```
 kubectl apply -f manifests/deployment.yaml
 kubectl get deployments
 kubectl describe deployment my-app
+```
+
+```
+kubectl logs my-app-86d5bc587d-6qw95 -n default
+
+for pod in $(kubectl get pods -l app=my-app -n default -o jsonpath='{.items[*].metadata.name}'); do
+  echo "Logs for $pod:"
+  kubectl logs $pod -n default
+done
 ```
 
 ```
