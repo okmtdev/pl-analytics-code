@@ -96,7 +96,7 @@ kubectl top nodes
 ネームスペース
 
 ```
-kubectl create namespace ngin
+kubectl create namespace my-namespace
 ```
 
 ```
@@ -130,6 +130,16 @@ Service を LoadBalancer にすると GCP の外部ロードバランサーが�
 
 ```
 kubectl get services my-app-service
+```
+
+## Pod の確認
+
+```
+kubectl -n kube-system top pod
+kubectl -n kube-system top pod --containers
+
+watch -n 2 kubectl top pod --namespace <namespace>
+
 ```
 
 ## クラスター削除コマンド
